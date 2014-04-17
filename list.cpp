@@ -2,7 +2,8 @@
  * John Pigott
  * CS219
  * List Homework
- * 4/1/14
+ * Created: 4/1/14
+ * Last Modifed: 4/15/14
  */
 #include <iostream>
 #include <cstdlib>
@@ -20,10 +21,12 @@ int main()
     my_list.push_tail(40);
     cout << my_list.size() << endl; 
     my_list.display_all();
-    cout << "Popped: " << my_list.pop_tail() << endl;
-    cout << "Popped: " << my_list.pop_tail() << endl;
-    cout << "Popped: " << my_list.pop_tail() << endl;
-    cout << "Popped: " << my_list.pop_tail() << endl;
+    cout << "Popped: " << my_list.pop_head() << endl;
+    cout << "Popped: " << my_list.pop_head() << endl;
+    cout << "Popped: " << my_list.pop_head() << endl;
+    cout << "Popped: " << my_list.pop_head() << endl;
+    cout << "Popped: " << my_list.pop_head() << endl;
+    cout << "Popped: " << my_list.pop_head() << endl;
     cout << "Size: " << my_list.size() << endl;  
 
     my_list.display_all();
@@ -82,6 +85,12 @@ void jp_list::push_tail(int nw_data)
 int jp_list::pop_head()
 {
     node *old_head = head->next;
+
+    if(old_head == head)
+    {
+        cout << "Nothing to pop. Returning -1 as placeholder\n";
+        return -1;
+    }
     int old_head_data = head->next->data;
 
     head->next = old_head->next;
@@ -96,6 +105,13 @@ int jp_list::pop_head()
 int jp_list::pop_tail()
 {
     node *old_tail = head->prev;
+    
+    if(old_tail == head)
+    {
+        cout << "Nothing to pop. Returning -1 as placeholder\n";
+        return -1;
+    }
+
     int old_tail_data = head->prev->data;
 
     head->prev = old_tail->prev;

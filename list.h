@@ -5,7 +5,8 @@
  * John Pigott
  * CS219
  * List Homework
- * 3/31/14
+ * Created: 3/31/14
+ * Last Modified: 4/15/14 
  */
 
 struct node
