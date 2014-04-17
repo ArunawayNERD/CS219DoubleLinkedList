@@ -13,8 +13,13 @@ int main()
 {
     jp_list my_list;
     
+    cout << my_list.size() << endl;
     my_list.push_head(10);
+    my_list.push_head(20);
+    my_list.push_head(30);
+    cout << my_list.size() << endl;   
 
+    my_list.display_all();
 /*    srand(time(0));    
 
     cout << "Size: " <<  my_list.size() << endl << endl;
@@ -102,7 +107,7 @@ int jp_list::pop_head()
     crt_ptr->next = tail;
 
     return tail_data;
-}
+}*/
 
 int jp_list::size()
 {
@@ -110,14 +115,10 @@ int jp_list::size()
     node *crt_ptr; //pointer to current node
       
     crt_ptr = head->next;
-    while(crt_ptr != tail)
+    while(crt_ptr != head)
     {
-        if(crt_ptr->next != 0)
-        {
-            crt_ptr = crt_ptr->next; //advance to the next node then loop
-        }
-        
         size += 1;
+        crt_ptr = crt_ptr->next; //advance to the next node then loop        
     }
 
     return size;
@@ -126,13 +127,11 @@ int jp_list::size()
 void jp_list::display_all()
 {
     node *crt_ptr = head->next;
-    int length = size();
-
-    for(int i = 0; i < crt_ptr == head; i++)
+   
+    for(int i = 0; crt_ptr != head; i++)
     {
-        if(crt_ptr != 0)
-            cout << "Node " << (i+1) << ": " << crt_ptr->data << endl;
+        cout << "Node " << (i+1) << ": " << crt_ptr->data << endl;
         
         crt_ptr = crt_ptr->next;
     }
-} */
+}
