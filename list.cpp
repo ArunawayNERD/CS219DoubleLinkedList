@@ -20,9 +20,11 @@ int main()
     my_list.push_tail(40);
     cout << my_list.size() << endl; 
     my_list.display_all();
-    cout << "Popped: " << my_list.pop_head() << endl;
-    cout << "Popped: " << my_list.pop_head() << endl;
-    cout << "Side: " << my_list.size() << endl;  
+    cout << "Popped: " << my_list.pop_tail() << endl;
+    cout << "Popped: " << my_list.pop_tail() << endl;
+    cout << "Popped: " << my_list.pop_tail() << endl;
+    cout << "Popped: " << my_list.pop_tail() << endl;
+    cout << "Size: " << my_list.size() << endl;  
 
     my_list.display_all();
 /*    srand(time(0));    
@@ -91,29 +93,19 @@ int jp_list::pop_head()
     return old_head_data;
 }
 
-/* int jp_list::pop_tail()
+int jp_list::pop_tail()
 {
-    int tail_data;
-    node *crt_ptr;
-    int length = size();
+    node *old_tail = head->prev;
+    int old_tail_data = head->prev->data;
 
-    crt_ptr = head;
+    head->prev = old_tail->prev;
+    old_tail->prev->next = head;
+
+    delete old_tail;
+    old_tail = 0;
     
-    //goes to second to last node
-    for(int i = 0; i < (length-1); i++)
-    {
-        if(crt_ptr->next != 0)
-        {
-            crt_ptr = crt_ptr->next;
-        }
-     }
-
-    tail_data = crt_ptr->next->data;
-    
-    crt_ptr->next = tail;
-
-    return tail_data;
-}*/
+    return old_tail_data;
+}
 
 int jp_list::size()
 {
