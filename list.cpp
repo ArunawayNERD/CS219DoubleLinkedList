@@ -18,7 +18,11 @@ int main()
     my_list.push_tail(20);
     my_list.push_head(30);
     my_list.push_tail(40);
-    cout << my_list.size() << endl;   
+    cout << my_list.size() << endl; 
+    my_list.display_all();
+    cout << "Popped: " << my_list.pop_head() << endl;
+    cout << "Popped: " << my_list.pop_head() << endl;
+    cout << "Side: " << my_list.size() << endl;  
 
     my_list.display_all();
 /*    srand(time(0));    
@@ -75,11 +79,16 @@ void jp_list::push_tail(int nw_data)
 
 int jp_list::pop_head()
 {
-    int head_data = head->next->data;
+    node *old_head = head->next;
+    int old_head_data = head->next->data;
+
+    head->next = old_head->next;
+    old_head->next->prev = head;
     
-    head->next = head->next->next;
+    delete old_head;
+    old_head = 0;
     
-    return head_data;
+    return old_head_data;
 }
 
 /* int jp_list::pop_tail()
