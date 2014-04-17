@@ -12,8 +12,6 @@
 struct node
 {
     node():data(0), next(0), prev(0){};
-    node(int nd_data, node *next_nd, node *prev_nd)
-                                :data(nd_data), next(next_nd), prev(prev_nd){};
    
     int data;
     node *next;

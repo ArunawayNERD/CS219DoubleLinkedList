@@ -14,23 +14,7 @@ int main()
 {
     jp_list my_list;
     
-    cout << my_list.size() << endl;
-    my_list.push_head(10);
-    my_list.push_tail(20);
-    my_list.push_head(30);
-    my_list.push_tail(40);
-    cout << my_list.size() << endl; 
-    my_list.display_all();
-    cout << "Popped: " << my_list.pop_head() << endl;
-    cout << "Popped: " << my_list.pop_head() << endl;
-    cout << "Popped: " << my_list.pop_head() << endl;
-    cout << "Popped: " << my_list.pop_head() << endl;
-    cout << "Popped: " << my_list.pop_head() << endl;
-    cout << "Popped: " << my_list.pop_head() << endl;
-    cout << "Size: " << my_list.size() << endl;  
-
-    my_list.display_all();
-/*    srand(time(0));    
+    srand(time(0));    
 
     cout << "Size: " <<  my_list.size() << endl << endl;
     for(int i = 0; i < 100; i++)
@@ -42,7 +26,7 @@ int main()
 
     cout << "\nSize: " << my_list.size() << endl;
     return 0;
-*/
+
 }
 
 jp_list::jp_list()
@@ -50,11 +34,6 @@ jp_list::jp_list()
     head = new node;
     head->next = head;
     head->prev = head;
-
-    cout << "Head: " << head << endl; 
-    cout << "AfterHead: " << head->next <<endl;
-    cout << "BeforeHead: " << head->prev << endl << endl;
-
 }
 
 void jp_list::push_head(int nw_data)
