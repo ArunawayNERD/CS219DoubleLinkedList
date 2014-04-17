@@ -15,8 +15,9 @@ int main()
     
     cout << my_list.size() << endl;
     my_list.push_head(10);
-    my_list.push_head(20);
+    my_list.push_tail(20);
     my_list.push_head(30);
+    my_list.push_tail(40);
     cout << my_list.size() << endl;   
 
     my_list.display_all();
@@ -60,21 +61,17 @@ void jp_list::push_head(int nw_data)
       
 }
 
-/*void jp_list::push_tail(int nw_data)
+void jp_list::push_tail(int nw_data)
 {
-    int length = size();
+    node *temp = new node;
+    temp->data = nw_data;
 
-    node *crt_ptr = head;
-    for(int i = 0; i < length; i++)
-    {
-        if(crt_ptr->next != 0)
-        {
-            crt_ptr = crt_ptr->next;
-        }
-    }
-    
-//    crt_ptr->next = new node(nw_data, crt_ptr->next);
-}*/
+    head->prev->next = temp;
+    temp->prev = head->prev;
+
+    temp->next = head;
+    head->prev = temp;
+}
 
 int jp_list::pop_head()
 {
