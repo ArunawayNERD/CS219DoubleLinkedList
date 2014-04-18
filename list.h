@@ -5,14 +5,11 @@
  * John Pigott
  * CS219
  * List Homework
- * Created: 3/31/14
- * Last Modified: 4/15/14 
+ * Last Modified: 4/18/14 
  */
 
 struct node
 {
-    node():data(0), next(0), prev(0){};
-   
     int data;
     node *next;
     node *prev;
