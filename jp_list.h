@@ -29,7 +29,7 @@ class jp_list
         void display_all();
 
         jp_list& operator= (const jp_list&);
- 
+        virtual ~jp_list(); 
     private:
         node *head;
 };
@@ -39,6 +39,18 @@ jp_list::jp_list()
     head = new node;
     head->next = head;
     head->prev = head;
+}
+
+jp_list::~jp_list()
+{
+    int list_size = size();
+
+    for(int i = 0; i < list_size; i++)
+    {
+        pop_head();
+    }
+    
+    delete head;
 }
 
 jp_list& jp_list::operator=(const jp_list& rt_side)
@@ -54,7 +66,7 @@ jp_list& jp_list::operator=(const jp_list& rt_side)
     {
         pop_head();    
     }
-
+    
     while(crt_ptr != rt_side.head)
     {
         push_tail(crt_ptr->data);
