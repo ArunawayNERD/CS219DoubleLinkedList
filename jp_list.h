@@ -27,6 +27,8 @@ class jp_list
         int pop_tail(); //removes the tail node and returns it
         int size();
         void display_all();
+
+        jp_list& operator= (const jp_list&);
  
     private:
         node *head;
@@ -37,6 +39,29 @@ jp_list::jp_list()
     head = new node;
     head->next = head;
     head->prev = head;
+}
+
+jp_list& jp_list::operator=(const jp_list& rt_side)
+{
+    if(this == &rt_side)
+        return *this;
+
+    int list_size = size();
+    node *crt_ptr = rt_side.head->next;
+
+    //empty this list so the rt_side can be coppied in
+    for(int i = 0; i < list_size; i++) 
+    {
+        pop_head();    
+    }
+
+    while(crt_ptr != rt_side.head)
+    {
+        push_tail(crt_ptr->data);
+        crt_ptr = crt_ptr->next;
+    }
+
+   return *this;
 }
 
 void jp_list::push_head(int nw_data)
