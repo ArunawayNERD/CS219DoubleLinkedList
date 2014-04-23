@@ -59,13 +59,16 @@ jp_list& jp_list::operator=(const jp_list& rt_side)
         return *this;
 
     int list_size = size();
-    node *crt_ptr = rt_side.head->next;
+    node *crt_ptr = head->next;
 
     //empty this list so the rt_side can be coppied in
-    for(int i = 0; i < list_size; i++) 
+    while(crt_ptr != head) 
     {
+        crt_ptr = crt_ptr->next;
         pop_head();    
     }
+
+    crt_ptr = rt_side.head->next;
     
     while(crt_ptr != rt_side.head)
     {
