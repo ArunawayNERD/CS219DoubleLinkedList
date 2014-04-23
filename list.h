@@ -65,43 +65,30 @@ void jp_list::push_tail(int nw_data)
 
 int jp_list::pop_head()
 {
-    node *old_head = head->next;
+    node *temp = head->next;
+    int temp_data = head->next->data;
 
-    if(old_head == head)
-    {
-        cout << "Nothing to pop. Returning -1 as placeholder\n";
-        return -1;
-    }
-    int old_head_data = head->next->data;
+    head->next = temp->next;
+    temp->next->prev = head;
 
-    head->next = old_head->next;
-    old_head->next->prev = head;
+    delete temp;
+    temp = 0;
 
-    delete old_head;
-    old_head = 0;
-
-    return old_head_data;
+    return temp_data;
 }
 
 int jp_list::pop_tail()
 {
-    node *old_tail = head->prev;
+    node *temp = head->prev;
+    int temp_data = head->prev->data;
 
-    if(old_tail == head)
-    {
-        cout << "Nothing to pop. Returning -1 as placeholder\n";
-        return -1;
-    }
+    head->prev = temp->prev;
+    temp->prev->next = head;
 
-    int old_tail_data = head->prev->data;
+    delete temp;
+    temp = 0;
 
-    head->prev = old_tail->prev;
-    old_tail->prev->next = head;
-
-    delete old_tail;
-    old_tail = 0;
-
-    return old_tail_data;
+    return temp_data;
 }
 
 int jp_list::size()
