@@ -21,6 +21,7 @@ class jp_list
          
     public:
         jp_list();
+        jp_list(const jp_list&);
         void push_head(int);
         void push_tail(int);
         int pop_head(); //removes the head node and returns it
@@ -30,6 +31,7 @@ class jp_list
 
         jp_list& operator= (const jp_list&);
         virtual ~jp_list(); 
+
     private:
         node *head;
 };
@@ -39,6 +41,20 @@ jp_list::jp_list()
     head = new node;
     head->next = head;
     head->prev = head;
+}
+
+jp_list::jp_list(const jp_list& rt_side)
+{
+    head = new node;
+    head->next = head;
+    head->prev = head;
+
+    node *crt_ptr = rt_side.head->next;
+    while(crt_ptr != rt_side.head)
+    {
+       push_tail(crt_ptr->data);
+       crt_ptr = crt_ptr->next;
+    }        
 }
 
 jp_list::~jp_list()
