@@ -176,3 +176,157 @@ void jp_list::display_all()
 
 
 #endif 
+
+
+//      Updated Circular Linked List Using C Language
+/*
+//      Complete Circular Linked List
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+void create(struct node **h)
+{
+    struct node *curr, *ptr;
+    int n, i;
+    printf("\nEnter the number of node you want : ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        curr = (struct node *)malloc(sizeof(struct node));
+        printf("\nEnter the data for Node %d : ", i + 1);
+        scanf("%d", &curr->data);
+        curr->next = NULL;
+
+        if (*h == NULL)
+        {
+            *h = curr;
+            ptr = curr;
+            ptr->next = *h;
+        }
+        else
+        {
+            curr->next = *h;
+            ptr->next = curr;
+            ptr = curr;
+        }
+    }
+}
+
+void display(struct node *h)
+{
+    if (h == NULL)
+    {
+        return;
+    }
+    struct node *ptr;
+    for (ptr = h; ptr->next != h; ptr = ptr->next)
+    {
+        printf("%d\t", ptr->data);
+    }
+    printf("%d\t", ptr->data);
+}
+
+void insert(struct node **h)
+{
+    struct node *curr, *ptr;
+    int v, p;
+    printf("Enter the data of Node which you want to insert : ");
+    scanf("%d", &v);
+    printf("Enter the position at which you want the node to insert : ");
+    scanf("%d", &p);
+
+    curr = (struct node *)malloc(sizeof(struct node));
+    curr->data = v;
+    curr->next = NULL;
+
+    if (*h == NULL)
+    {
+        *h = curr;
+        ptr = curr;
+    }
+    else if (p == 0)
+    {
+        for (ptr = *h; ptr->next != *h; ptr = ptr->next);
+        curr->next = *h;
+        ptr->next = curr;
+        *h = curr;
+    }
+    else
+    {
+        ptr = *h;
+        int i = 1;
+        while (i < p)
+        {
+            ptr = ptr->next;
+            i++;
+        }
+        curr->next = ptr->next;
+        ptr->next = curr;
+    }
+}
+
+void delete (struct node **h)
+{
+    struct node *ptr, *prev;
+    int p;
+    printf("\nEnter the position of Node which you want to delete : ");
+    scanf("%d", &p);
+
+    if (*h == NULL)
+    {
+        printf("\nCircular Linked List is Empty.\n");
+    }
+    else
+    {
+        ptr = *h;
+        int i = 1;
+        while (i < p && ptr->next != *h)
+        {
+            prev = ptr;
+            ptr = ptr->next;
+            i++;
+        }
+        if (i < p)
+        {
+            printf("Node Not Found.");
+        }
+        else if ((*h)->next == *h)
+        {
+            *h = NULL;
+            free(ptr);
+        }
+        else if (p == 1)
+        {
+            for (prev = *h; prev->next != *h; prev = prev->next);
+            prev->next = ptr->next;
+            *h = ptr->next;
+            free(ptr);
+        }
+        else
+        {
+            prev->next = ptr->next;
+            free(ptr);
+        }
+    }
+}
+
+int main()
+{
+    struct node *head = NULL;
+    create(&head);
+    display(head);
+    insert(&head);
+    display(head);
+    delete(&head);
+    display(head);
+    return 0;
+}
+*/
